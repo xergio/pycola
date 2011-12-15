@@ -2,7 +2,7 @@ Simple code for parallel execution of enqueued items.
 
 We use a similar version in our business to handle all the queues like SMS, callbacks, CDR and slow sql querys.
 
-The basic method is to call URLs and the web server process the item.
+The basic method is to call URLs and then the web server process the item.
 
 The early version of this code only process simulated items, in a future i'll implement a URL call, enqueuer and workers.
 
