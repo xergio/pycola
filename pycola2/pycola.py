@@ -34,7 +34,7 @@ class Pycola(object):
 
 
     def fill(self):
-        if self._items_queue.qsize() < 50:
+        if self._items_queue.qsize() < (self._num_workers*10):
 
             item_list = self.get_items()
             print "adding %d" % len(item_list)
@@ -82,7 +82,7 @@ class Worker(multiprocessing.Process):
                 self.wait(start_time, item)
 
             else:
-                time.sleep(0.5) # idle, empty queue
+                time.sleep(0.001) # idle, empty queue
 
 
     def wait(self, start_time, item):
@@ -90,5 +90,5 @@ class Worker(multiprocessing.Process):
         sleep_time = 1 - (done_time if done_time > 0 else 0)
 
         if sleep_time < 0: sleep_time = 0.00001
-        print "%s execute %d in %f. sleep %f" % (self.name, item, done_time, sleep_time)
+        print "[%.4f] %s execute %s in %f. sleep %f" % (time.time(), self.name, str(item), done_time, sleep_time)
         time.sleep(sleep_time)

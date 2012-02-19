@@ -9,4 +9,4 @@ class Loader(object):
         pass
 
     def load(self):
-        return range(int(100 * random.random()))
+        return range(int(1000 * random.random()))

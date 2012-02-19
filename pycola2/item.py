@@ -9,5 +9,5 @@ class Item(object):
 
 
     def __call__(self):
-        # pass
+        # pass, do nothing with 'value'
         time.sleep(random.random())
